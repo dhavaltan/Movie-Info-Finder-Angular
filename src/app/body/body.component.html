@@ -1,0 +1,62 @@
+<div class="container-fluid">
+<form class="search-form">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Enter title here" [(ngModel)]="userinput" name="userinput" />
+      <div class="input-group-append">
+        <button (click)="search()" class="btn btn-success" type="submit">Go</button>
+      </div>
+    </div>
+  </form>
+  
+  <div class="container">
+    <div class="modal fade" id="infoModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="card shadow">
+              <button (click)="resetModal()" data-dismiss="modal" class="btn btn-danger ml-auto">X</button>
+              <img *ngIf="modalData.Poster !='N/A'" class="card-img-top" [src]="modalData.Poster" alt="Poster not available" style="height: 200px; width:100%">
+              <img *ngIf="modalData.Poster ==='N/A'" class="card-img-top" src="http://placehold.jp/99ccff/003366/300x300.png?text=No%20Poster%20Available" alt="Poster not available" style="height: 200px; width:100%">
+              <div class="card-body">
+                  <h5>{{modalData.Title}}</h5>
+                  <h6>Release: {{modalData.Released}}</h6>
+                  <h6>IMDB Rating: {{modalData.imdbRating}}</h6>
+                  <h6>Actors: {{modalData.Actors}}</h6>
+                  <h6>Director: {{modalData.Director}}</h6>
+                  <h6>Genre : {{modalData.Genre}}</h6>
+                  <h6>Runtime: {{modalData.Runtime}}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container-fluid">
+  
+
+  <div class="row">
+      <div *ngFor="let res of response" class="col col-12 col-md-6 col-sm-12 col-lg-3">
+        <div *ngIf="res.Poster !='N/A'" class="card shadow"> 
+            <img class="card-img-top" [src]="res.Poster" alt="Poster not available" style="height:300px; width:100%">
+            <div class="card-body">
+                <h4>{{res.Title}}</h4>
+                <h5>Type: {{res.Type}}</h5>
+                <button class="btn btn-success" data-toggle="modal" style="width:100%" data-target="#infoModal" (click)="getFullInformation(res.imdbID)">More Info</button>
+            </div>
+      </div>
+      <div *ngIf="res.Poster ==='N/A'" class="card shadow"> 
+        <img class="card-img-top" src="http://placehold.jp/99ccff/003366/300x300.png?text=No%20Poster%20Available" alt="Poster not available" style="height:300px; width:100%">
+        <div class="card-body">
+            <h4>{{res.Title}}</h4>
+            <h5>Type: {{res.Type}}</h5>
+            <button class="btn btn-success" data-toggle="modal" style="width:100%" data-target="#infoModal" (click)="getFullInformation(res.imdbID)">More Info</button>
+        </div>
+  </div>
+      </div>
+  </div>
+
+  <div class="text-center"><h1 id="NoMovies"></h1></div>
+  
+</div>
+</div>

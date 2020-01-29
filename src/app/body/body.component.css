@@ -1,0 +1,36 @@
+.search-form {
+    margin-top: 20px;
+    margin-bottom: 20px ;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.modal-dialog {
+  padding: 0 !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal-dialog {
+    width : 40% !important;
+ }
+}
+
+@media only screen and (min-width: 992px) {
+  .modal-dialog {
+    width : 32% !important;
+ }
+}
+
+@media only screen and (min-width: 1200px) {
+  .modal-dialog {
+    width : 25% !important;
+ }
+}
+  .modal {
+    margin-top: 5%;
+  }
+
+  .card {
+    margin-top: 5px;
+    padding: 0;
+}
